@@ -10,7 +10,6 @@ var removeElement = function(nums, val) {
             i--
         
         }
-        console.log(nums)
     }
     return nums.length
 };
