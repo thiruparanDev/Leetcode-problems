@@ -33,7 +33,6 @@ var addTwoNumbers = function(l1, l2) {
         else {
             carry = 0
         }
-        console.log(x)
         current.next = new ListNode(x);
         current = current.next
 
