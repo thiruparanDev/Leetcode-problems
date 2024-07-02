@@ -11,35 +11,31 @@
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2) {
-    let dummy = new ListNode();
-    let current = dummy;
-    let carry = 0;
-    
-    
-    while (l1||l2){
-        let x = carry
-        if (l1){
-            x += l1.val
-            l1 = l1.next
-        }
-        if (l2){
-            x += l2.val
-            l2 = l2.next
-        }
-        if (x>=10){
-        carry =1
-        x = x-10
-        }
-        else {
-            carry = 0
-        }
-        current.next = new ListNode(x);
-        current = current.next
+    let values = [];
+    let overflow = 0;
+    while (l1.next || l2.next) {
+        const value = (l1.val + l2.val + overflow) % 10;
+        overflow = l1.val + l2.val + overflow >= 10 ? 1 : 0;
+        values.push(value);
 
-        
+        l1 = l1.next || new ListNode(0);
+        l2 = l2.next || new ListNode(0);
     }
-    if (carry !== 0){
-        current.next = new ListNode(carry);
+    const value = (l1.val + l2.val + overflow) % 10;
+    overflow = l1.val + l2.val + overflow >= 10 ? 1 : 0;
+    values.push(value);
+    if (overflow === 1) {
+        values.push(1);
     }
-    return dummy.next
+    let node = undefined;
+    values.reverse().forEach(item => {
+        if (node === undefined) {
+            node = new ListNode(item);
+        } else {
+            const newNode = new ListNode(item);
+            newNode.next = node;
+            node = newNode;
+        }
+    });
+    return node;
 };
