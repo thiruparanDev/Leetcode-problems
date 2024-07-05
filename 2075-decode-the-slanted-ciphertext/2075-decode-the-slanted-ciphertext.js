@@ -10,10 +10,10 @@ var decodeCiphertext = function(encodedText, rows) {
         for (let i=1; i<=rows; i++){
             pos = i+j + (i-1)*letPerRow - 2
             if (encodedText[pos] === undefined){
-                return origText.trimEnd()
+                return origText.replace(/\s+$/, '')
             }
         origText += encodedText[pos]
         }
     }
-    return origText.trimEnd()
+    return origText.replace(/\s+$/, '')
 };
