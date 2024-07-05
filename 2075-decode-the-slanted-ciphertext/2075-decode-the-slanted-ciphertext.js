@@ -13,7 +13,7 @@ var decodeCiphertext = function(encodedText, rows) {
         // count++;
         pos = i+j + (i-1)*letPerRow - 2
         if (encodedText[pos] === undefined){
-            break;
+            return origText.replace(/\s+$/, '')
         }
         if (encodedText[pos] === ' '){
             // emptCount++;
