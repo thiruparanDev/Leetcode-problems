@@ -10,21 +10,6 @@
  * @return {ListNode}
  */
 var swapPairs = function(head) {
-    // let final = head
-    // let current = head
-    // if (!current.next){
-    //     return
-    // }
-    // else {
-    //     let dummy = current.next.next
-    //     let dummy2 = current.next
-    //     current.next = dummy
-    //     dummy2.next = current
-    //     final = dummy2
-    //     if (final.next.next){
-    //         current = current.next.next
-    //     }
-    // }
     let current  = head
     const final = new ListNode()
     let finalDummy = final
@@ -45,5 +30,4 @@ var swapPairs = function(head) {
 
     }
     return final.next
-
 };
