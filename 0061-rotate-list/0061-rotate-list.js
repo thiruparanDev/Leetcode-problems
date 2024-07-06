@@ -11,23 +11,6 @@
  * @return {ListNode}
  */
 var rotateRight = function(head, k) {
-    // let final = head
-    // let current = final
-    // for (let i=1; i<=k; i++){
-    //     if (!final || !final.next){
-    //         return final
-    //     }
-    //     let dummy = null
-    //     while (current.next !== null){
-    //         dummy = current
-    //         current = current.next
-    //     }
-    //     dummy.next = null
-    //     current.next = final
-    //     final = current
-    // }
-    // return final
-    
     let dummy = head
     let current = dummy
     let count = 1
