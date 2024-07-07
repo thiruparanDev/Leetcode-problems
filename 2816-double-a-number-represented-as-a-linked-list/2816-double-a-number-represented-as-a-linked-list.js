@@ -12,22 +12,6 @@
 var doubleIt = function(head) {
     const dummy = new ListNode(0)
     let current = dummy
-//     let carry = ''
-//     if (head){
-//         carry += String(head.val)
-//     }
-    
-//     while (head.next !== null){
-//         head = head.next
-//         carry += String(head.val)
-//     }
-//     carry = String(Number(carry)*2)
-//     for (i=0; i<carry.length; i++){
-//         current.next = new ListNode(Number(carry[i]))
-//         current = current.next
-//     }
-//     return dummy.next
-    // let prev = null
     let val = 0
     while (head !== null){
         val = 2*head.val
