@@ -12,8 +12,8 @@
 var doubleIt = function(head) {
     const dummy = new ListNode(0)
     let current = dummy
+    let val = 0
     while (head !== null){
-        let val = 0
         val = 2*head.val
         if (val>=10){
             current.next = new ListNode(val-10)
