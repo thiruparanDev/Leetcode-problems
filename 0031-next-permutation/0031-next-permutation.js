@@ -24,17 +24,27 @@ var nextPermutation = function(nums) {
             break
         }
     }
-    for(let j = a; j<nums.length-1; j++){
-        let min = j
-        for (let k = j+1; k<nums.length; k++){
-            if (nums[k]<nums[min]){
-                min = k
-            }
+    // for(let j = a; j<nums.length-1; j++){
+    //     let min = j
+    //     for (let k = j+1; k<nums.length; k++){
+    //         if (nums[k]<nums[min]){
+    //             min = k
+    //         }
+    //     }
+    //     if (min !==j){
+    //         let m = nums[j]
+    //         nums[j] = nums[min]
+    //         nums[min] = m
+    //     }
+    // }
+    let i, key, j;
+    for (i = a; i < nums.length; i++) {
+        key = nums[i];
+        j = i - 1;
+        while (j >= a && nums[j] > key) {
+            nums[j + 1] =   nums[j];
+            j = j - 1;
         }
-        if (min !==j){
-            let m = nums[j]
-            nums[j] = nums[min]
-            nums[min] = m
-        }
+        nums[j + 1] = key;
     }
 };
