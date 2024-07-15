@@ -5,10 +5,7 @@
 var nextPermutation = function(nums) {
     let a = 0
     for (let i=nums.length-1; i>0; i--){
-        if (nums[i]<=nums[i-1]){
-            continue;
-        }
-        else{
+        if (nums[i]>nums[i-1]){
             let minIndex = i
             if (nums[i+1]){
                 for (let l=i+1; l<nums.length; l++){
