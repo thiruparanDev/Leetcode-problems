@@ -16,12 +16,12 @@ var sumNumbers = function(root) {
             return 0
         }
         currentNumber = currentNumber*10+node.val
-        if (!node.left && !node.right){
+        if(node.left === null&&node.right===null){
             return currentNumber
         }
         const leftSum = dfs(node.left,currentNumber)
-        const rightSum = dfs(node.right, currentNumber)
-        return rightSum+leftSum
+        const rightSum = dfs(node.right,currentNumber)
+        return leftSum + rightSum
     }
     return dfs(root,0)
 };
