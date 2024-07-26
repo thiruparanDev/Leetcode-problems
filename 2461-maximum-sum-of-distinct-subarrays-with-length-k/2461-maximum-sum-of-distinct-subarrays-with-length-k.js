@@ -4,73 +4,27 @@
  * @return {number}
  */
 var maximumSubarraySum = function(nums, k) {
-    // if (nums.length<k){
-    //     return []
-    // }
-    // let maxSum = 0
-    // for (let i=0;i<=nums.length-k;i++){
-    //     let sum = 0
-    //     let arr = []
-    //     let broken = false
-    //     for (let j=i; j<i+k; j++){
-    //         if (arr.includes(nums[j])){
-    //             broken = true
-    //             break
-    //         }
-    //         else {
-    //             sum+=nums[j]
-    //             arr.push(nums[j])
-    //         }
-    //     }
-    //     if (!broken && sum>maxSum){
-    //         maxSum = sum
-    //     }
-    // }
-    // return maxSum
-    // if (nums.length<k){
-    //     return []
-    // }
-    // let maxSum = 0
-    // for (let i=0;i<=nums.length-k;i++){
-    //     let sum = 0
-    //     let arr = []
-    //     let broken = false
-    //     for (let j=i; j<i+k; j++){
-    //         if (arr.includes(nums[j])){
-    //             broken = true
-    //             break
-    //         }
-    //         else {
-    //             sum+=nums[j]
-    //             arr.push(nums[j])
-    //         }
-    //     }
-    //     if (!broken && sum>maxSum){
-    //         maxSum = sum
-    //     }
-    // }
-    // return maxSum
     if (nums.length<k){
         return 0
     }
+    const ma = new Map()
     const arr = []
-    const se = new Map()
-    let maxSum = 0
     let sum = 0
-    for (let i=0; i<nums.length; i++){
+    let maxSum = 0
+    for (let i=0; i<nums.length;i++){
+        ma.set(nums[i],(ma.get(nums[i])||0)+1)
         arr.push(nums[i])
-        se.set(nums[i],(se.get(nums[i])||0)+1)
         sum += nums[i]
         if (arr.length>k){
-            const removedElement = arr.shift()
-            se.set(removedElement,se.get(removedElement)-1)
-            if (se.get(removedElement)==0){
-                se.delete(removedElement)
+            removedItem = arr.shift()
+            sum -= removedItem
+            ma.set(removedItem,(ma.get(removedItem))-1)
+            if (ma.get(removedItem)===0){
+                ma.delete(removedItem)
             }
-            sum -= removedElement
         }
-        if(se.size === k && arr.length ===k){
-            maxSum = Math.max(maxSum,sum)
+        if (k===ma.size && k===arr.length){
+            maxSum = Math.max(sum, maxSum)
         }
     }
     return maxSum
