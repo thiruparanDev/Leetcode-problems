@@ -11,17 +11,17 @@
  * @return {number}
  */
 var sumNumbers = function(root) {
-    const dfs = (node,currentNumber)=>{
-        if (!node){
-            return 0
-        }
+    const dfs = (node, currentNumber)=>{
+       if (node===null){
+           return 0
+       }
         currentNumber = currentNumber*10+node.val
-        if(node.left === null&&node.right===null){
+        if (node.left===null&&node.right===null){
             return currentNumber
         }
-        const leftSum = dfs(node.left,currentNumber)
-        const rightSum = dfs(node.right,currentNumber)
-        return leftSum + rightSum
+        const leftSum = dfs(node.left,currentNumber) 
+        const rightSum = dfs(node.right, currentNumber)
+        return leftSum+rightSum
     }
     return dfs(root,0)
 };
